@@ -1,41 +1,152 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title> </title>
-
-    <!-- Connexion CSS -->
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coca-Cola - Expérience Interactive</title>
+  
+  <link rel="stylesheet" href="../css/style.css">
+  
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
 
-    <header>
+<div id="dc-root">
+  <div class="sc-host" data-sc-name="Coca-Cola">
+    <div id="root" style="font-family: Outfit, sans-serif; background: #c4101d; color: rgb(255, 255, 255); cursor: none;">
 
-      
+      <div id="cursorGlow"></div>
+      <div id="cursorDot"></div>
 
-    </header>
+      <header style="position: fixed; top: 0px; left: 0px; width: 100%; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 22px 5vw;">
+        <div style="font-family: Anton, sans-serif; font-size: 24px; letter-spacing: 1px; color: rgb(255, 255, 255); transform: skewX(-6deg); text-shadow: rgba(0, 0, 0, 0.4) 0px 2px 10px;">Coca-Cola</div>
+        <nav style="display: flex; row-gap: 34px; column-gap: 34px; align-items: center; font-size: 14px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;">
+          <a class="magnetic" href="#saveurs" style="color: rgb(255, 255, 255); text-decoration: none; opacity: 0.92; transition: transform 0.15s ease 0s;">Saveurs</a>
+          <a class="magnetic" href="#histoire" style="color: rgb(255, 255, 255); text-decoration: none; opacity: 0.92; transition: transform 0.15s ease 0s;">Histoire</a>
+          <a class="magnetic" href="#saveurs" style="color: rgb(230, 26, 39); background: rgb(255, 255, 255); text-decoration: none; padding: 11px 22px; border-radius: 40px; font-weight: 700; transition: transform 0.15s ease 0s;">Acheter</a>
+        </nav>
+      </header>
 
+      <section id="hero" style="position: relative; height: 300vh;">
+        <div id="stage" style="position: sticky; top: 0px; height: 100vh; overflow: hidden; background: radial-gradient(120% 120% at 50% 35%, rgb(255, 43, 57) 0%, rgb(224, 16, 31) 32%, rgb(168, 0, 14) 70%, rgb(94, 0, 8) 100%);">
+          
+          <div style="position: absolute; inset: 0px; background: radial-gradient(80% 80% at 50% 45%, transparent 40%, rgba(0, 0, 0, 0.45) 100%); pointer-events: none; z-index: 2;"></div>
 
-    <main>
+          <div id="bubbles" style="position: absolute; inset: 0px; z-index: 1; pointer-events: none;">
+            <div style="position: absolute; bottom: -40px; left: 86%; width: 7px; height: 7px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.15)); animation: 8.4s linear 1.4s infinite rise;"></div>
+            <div style="position: absolute; bottom: -40px; left: 4%; width: 10px; height: 10px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.15)); animation: 14.6s linear 6.3s infinite rise;"></div>
+            <div style="position: absolute; bottom: -40px; left: 63%; width: 31px; height: 31px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.15)); animation: 10.8s linear 4.1s infinite rise;"></div>
+            <div style="position: absolute; bottom: -40px; left: 52%; width: 36px; height: 36px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.15)); animation: 8.1s linear 2.3s infinite rise;"></div>
+            <div style="position: absolute; bottom: -40px; left: 73%; width: 39px; height: 39px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.15)); animation: 11.5s linear 4.8s infinite rise;"></div>
+          </div>
 
-    
+          <div id="layerA" style="position: absolute; inset: 0px; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 3; pointer-events: none; will-change: opacity, transform; opacity: 1; transform: scale(1);">
+            <div style="font-family: Anton, sans-serif; font-size: min(20vw, 260px); line-height: 0.82; letter-spacing: 2px; color: rgb(255, 255, 255); text-align: center; transform: translateY(-30px); text-shadow: rgba(0, 0, 0, 0.35) 0px 8px 40px;">SAVOURE</div>
+            <div style="font-family: Anton, sans-serif; font-size: min(20vw, 260px); line-height: 0.82; letter-spacing: 2px; color: rgb(255, 255, 255); text-align: center; transform: translateY(30px); text-shadow: rgba(0, 0, 0, 0.35) 0px 8px 40px;">L'INSTANT</div>
+          </div>
 
-    </main>
+          <div style="position: absolute; top: 48%; left: 50%; width: min(60vw, 560px); height: min(60vw, 560px); background: radial-gradient(circle, rgba(255, 220, 150, 0.55) 0%, rgba(255, 120, 90, 0.25) 40%, transparent 70%); transform: translate(-50%, -50%); animation: 5s ease-in-out infinite pulseGlow; z-index: 4; pointer-events: none;"></div>
 
+          <div id="canWrap" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 5; perspective: 1400px; will-change: transform;">
+            <img id="heroCan" src="../images/produits/1.png" alt="Canette Coca-Cola" style="height: 74vh; width: auto; display: block; filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px 40px 50px); will-change: transform; transform: rotateY(0deg) scale(1) translateY(0px);">
+          </div>
 
-    <footer>
+          <div id="layerB" style="position: absolute; inset: 0px; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 6; pointer-events: none; opacity: 0; will-change: opacity, transform; transform: translateY(30px);">
+            <div style="font-family: Anton, sans-serif; font-size: min(13vw, 170px); line-height: 0.9; color: rgb(255, 255, 255); text-shadow: rgba(0, 0, 0, 0.4) 0px 8px 40px;">DEPUIS 1886</div>
+            <div style="font-size: clamp(16px, 1.6vw, 24px); font-weight: 500; letter-spacing: 3px; text-transform: uppercase; margin-top: 18px; color: rgba(255, 255, 255, 0.92);">Un goût intemporel</div>
+          </div>
 
-    </footer>
+          <div style="position: absolute; bottom: 34px; left: 0px; width: 100%; display: flex; flex-direction: column; align-items: center; row-gap: 18px; z-index: 7;">
+            <a id="heroCta" class="magnetic" href="#saveurs" style="display: inline-block; background: rgb(255, 255, 255); color: rgb(230, 26, 39); font-weight: 700; font-size: 15px; letter-spacing: 0.5px; text-transform: uppercase; padding: 16px 34px; border-radius: 44px; text-decoration: none; box-shadow: rgba(0, 0, 0, 0.3) 0px 14px 34px;">Découvre les saveurs</a>
+            <div style="font-family: Anton, sans-serif; font-size: 24px; color: rgba(255, 255, 255, 0.85); animation: 1.8s ease-in-out infinite arrowBob;">⌄</div>
+          </div>
 
+        </div>
+      </section>
 
-    <!-- Connexion JS -->
-    <script src="js/script.js"></script>
+      <section id="saveurs" style="position: relative; background: linear-gradient(rgb(255, 255, 255) 0%, rgb(255, 247, 245) 100%); padding: 120px 5vw 140px; z-index: 10;">
+        <div style="max-width: 1280px; margin: 0px auto;">
+          <div style="text-align: center; margin-bottom: 70px;">
+            <div style="display: inline-block; background: rgb(230, 26, 39); color: rgb(255, 255, 255); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 8px 18px; border-radius: 40px; margin-bottom: 22px;">5 façons de se rafraîchir</div>
+            <h2 style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 0.92; color: rgb(26, 26, 26); letter-spacing: 1px;">CHOISIS TA SAVEUR</h2>
+            <p style="max-width: 560px; margin: 22px auto 0px; color: rgb(107, 107, 107); font-size: 18px; line-height: 1.5;">Du goût original à la cerise pétillante, il y a un Coca-Cola pour chaque envie. Survole une canette pour la faire vivre.</p>
+          </div>
 
+          <div id="flavorGrid">
+            <div class="flavor-card" data-accent="#E61A27">
+              <div class="splash" style="background: radial-gradient(circle, rgba(230, 26, 39, 0.22), transparent 65%);"></div>
+              <img class="flavor-can" src="../images/produits/2.png" alt="Coca-Cola Original">
+              <div style="position: relative; z-index: 2; margin-top: 24px;">
+                <div style="font-family: Anton, sans-serif; font-size: 22px; color: rgb(26, 26, 26); letter-spacing: 0.5px;">ORIGINAL</div>
+                <div style="font-size: 14px; color: rgb(138, 138, 138); margin-top: 6px; line-height: 1.4;">Le vrai goût, depuis 1886.</div>
+              </div>
+            </div>
+
+            <div class="flavor-card" data-accent="#9aa3ab">
+              <div class="splash" style="background: radial-gradient(circle, rgba(154, 163, 171, 0.3), transparent 65%);"></div>
+              <img class="flavor-can" src="../images/produits/3.png" alt="Coca-Cola Light">
+              <div style="position: relative; z-index: 2; margin-top: 24px;">
+                <div style="font-family: Anton, sans-serif; font-size: 22px; color: rgb(26, 26, 26); letter-spacing: 0.5px;">LIGHT</div>
+                <div style="font-size: 14px; color: rgb(138, 138, 138); margin-top: 6px; line-height: 1.4;">Rafraîchissant, sans calories.</div>
+              </div>
+            </div>
+
+            <div class="flavor-card" data-accent="#1a1a1a">
+              <div class="splash" style="background: radial-gradient(circle, rgba(26, 26, 26, 0.18), transparent 65%);"></div>
+              <img class="flavor-can" src="../images/produits/3.png" alt="Coca-Cola sans sucres">
+              <div style="position: relative; z-index: 2; margin-top: 24px;">
+                <div style="font-family: Anton, sans-serif; font-size: 22px; color: rgb(26, 26, 26); letter-spacing: 0.5px;">SANS SUCRES</div>
+                <div style="font-size: 14px; color: rgb(138, 138, 138); margin-top: 6px; line-height: 1.4;">Le vrai goût, zéro sucre.</div>
+              </div>
+            </div>
+
+            <div class="flavor-card" data-accent="#b0174b">
+              <div class="splash" style="background: radial-gradient(circle, rgba(176, 23, 75, 0.22), transparent 65%);"></div>
+              <img class="flavor-can" src="../images/produits/4.png" alt="Coca-Cola Cherry">
+              <div style="position: relative; z-index: 2; margin-top: 24px;">
+                <div style="font-family: Anton, sans-serif; font-size: 22px; color: rgb(26, 26, 26); letter-spacing: 0.5px;">CHERRY</div>
+                <div style="font-size: 14px; color: rgb(138, 138, 138); margin-top: 6px; line-height: 1.4;">Une touche fruitée emblématique.</div>
+              </div>
+            </div>
+
+            <div class="flavor-card" data-accent="#f3e5ab">
+              <div class="splash" style="background: radial-gradient(circle, rgba(243, 229, 171, 0.3), transparent 65%);"></div>
+              <img class="flavor-can" src="../images/produits/5.png" alt="Coca-Cola Vanille">
+              <div style="position: relative; z-index: 2; margin-top: 24px;">
+                <div style="font-family: Anton, sans-serif; font-size: 22px; color: rgb(26, 26, 26); letter-spacing: 0.5px;">VANILLE</div>
+                <div style="font-size: 14px; color: rgb(138, 138, 138); margin-top: 6px; line-height: 1.4;">La douceur d'un arôme exotique.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="histoire" style="position: relative; background: radial-gradient(120% 120% at 50% 0%, rgb(224, 16, 31) 0%, rgb(168, 0, 14) 60%, rgb(94, 0, 8) 100%); padding: 120px 5vw; text-align: center; overflow: hidden; z-index: 10;">
+        <div id="bubbles2" style="position: absolute; inset: 0px; pointer-events: none; opacity: 0.5;">
+          <div style="position: absolute; bottom: -40px; left: 26.14%; width: 24px; height: 24px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.15)); box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 6px inset; animation: 14.1s linear 3.5s infinite rise;"></div>
+          <div style="position: absolute; bottom: -40px; left: 73.48%; width: 17px; height: 17px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.15)); box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 6px inset; animation: 11.2s linear 1.1s infinite rise;"></div>
+          <div style="position: absolute; bottom: -40px; left: 6.27%; width: 35px; height: 35px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.15)); box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 6px inset; animation: 9.3s linear 1.0s infinite rise;"></div>
+          <div style="position: absolute; bottom: -40px; left: 29.41%; width: 35px; height: 35px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.15)); box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 6px inset; animation: 10.3s linear 6.0s infinite rise;"></div>
+          <div style="position: absolute; bottom: -40px; left: 48.14%; width: 13px; height: 13px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.15)); box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 6px inset; animation: 11.1s linear 1.6s infinite rise;"></div>
+          <div style="position: absolute; bottom: -40px; left: 89.07%; width: 21px; height: 21px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.15)); box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 6px inset; animation: 12.8s linear 3.2s infinite rise;"></div>
+        </div>
+        <div style="position: relative; z-index: 2; max-width: 760px; margin: 0px auto;">
+          <div style="font-family: Anton, sans-serif; font-size: clamp(40px, 6vw, 86px); line-height: 0.95; letter-spacing: 1px; color: #ffffff;">TOUJOURS LE MÊME<br>GOÛT, DEPUIS 140 ANS</div>
+          <p style="margin: 26px auto 36px; max-width: 560px; color: rgba(255, 255, 255, 0.9); font-size: 18px; line-height: 1.6;">Un secret bien gardé, des millions de moments partagés. Coca-Cola accompagne les instants qui comptent depuis 1886.</p>
+          <a class="magnetic" href="#hero" style="display: inline-block; background: rgb(255, 255, 255); color: rgb(230, 26, 39); font-weight: 700; font-size: 15px; letter-spacing: 0.5px; text-transform: uppercase; padding: 16px 34px; border-radius: 44px; text-decoration: none; box-shadow: rgba(0, 0, 0, 0.3) 0px 14px 34px;">Remonter</a>
+        </div>
+      </section>
+
+      <footer style="background: rgb(10, 0, 0); color: rgba(255, 255, 255, 0.6); text-align: center; padding: 40px 5vw; font-size: 13px; letter-spacing: 0.5px; position: relative; z-index: 10;">
+        <div style="font-family: Anton, sans-serif; font-size: 22px; color: rgb(255, 255, 255); transform: skewX(-6deg); margin-bottom: 14px;">Coca-Cola</div>
+        Refonte concept — non affilié à The Coca-Cola Company. © 1886–2026.
+      </footer>
+
+    </div>
+  </div>
+</div>
+
+<script src="../js/script.js"></script>
 </body>
-
 </html>
-
