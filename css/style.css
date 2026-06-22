@@ -1,4 +1,6 @@
-/* --- Styles Généraux & Animations Internes --- */
+/* ==========================================================================
+   1. STYLES GÉNÉRAUX & ANIMATIONS (COMMUNS)
+   ========================================================================== */
 * { 
   margin: 0; 
   padding: 0; 
@@ -57,25 +59,13 @@ x-dc {
   mix-blend-mode: difference;
 }
 
-/* --- Grille des saveurs (Flavor Grid) --- */
+/* --- Grille des saveurs standard (Index) --- */
 #flavorGrid {
   display: grid; 
   grid-template-columns: repeat(5, 1fr); 
   row-gap: 22px; 
   column-gap: 22px; 
   align-items: end;
-}
-
-@media (max-width: 992px) {
-  #flavorGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 576px) {
-  #flavorGrid {
-    grid-template-columns: 1fr;
-  }
 }
 
 .flavor-card {
@@ -114,7 +104,6 @@ x-dc {
   transform: translateY(0px) rotate(0deg) scale(1);
 }
 
-/* Transition de base pour les boutons magnétiques */
 .magnetic {
   transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -137,7 +126,7 @@ x-dc {
   50%      { transform: translateY(10px); opacity: .4; }
 }
 
-/* --- Polices de Caractères --- */
+/* --- Polices --- */
 @font-face {
   font-family: 'Anton'; font-style: normal; font-weight: 400; font-display: swap;
   src: url('https://fonts.gstatic.com/s/anton/v25/1Pt6G8TGS2-MSZJKXm7v.woff2') format('woff2');
@@ -145,4 +134,170 @@ x-dc {
 @font-face {
   font-family: 'Outfit'; font-style: normal; font-weight: 400; font-display: swap;
   src: url('https://fonts.gstatic.com/s/outfit/v11/0bUfFpPIuTY2jB0bc4mK.woff2') format('woff2');
+}
+
+
+/* ==========================================================================
+   2. SPÉCIFIQUE : PARALLAXE & BLOCS D'ENGAGEMENTS
+   ========================================================================== */
+
+/* --- Effet Scroll Parallaxe du Hero --- */
+#hero {
+  position: relative;
+  height: 300vh;
+}
+
+#hero .hero-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: radial-gradient(120% 120% at 50% 35%, rgb(255, 43, 57) 0%, rgb(224, 16, 31) 32%, rgb(168, 0, 14) 70%, rgb(94, 0, 8) 100%);
+}
+
+#layerA, #layerB {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  padding: 0 20px;
+  will-change: opacity, transform;
+}
+
+#layerA {
+  font-family: 'Anton', sans-serif;
+  font-size: min(15vw, 180px);
+  text-transform: uppercase;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-shadow: rgba(0, 0, 0, 0.35) 0px 8px 40px;
+}
+
+#layerB {
+  font-family: 'Anton', sans-serif;
+  font-size: min(12vw, 130px);
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: rgba(0, 0, 0, 0.4) 0px 8px 40px;
+}
+
+.can-container {
+  position: relative;
+  z-index: 5;
+  perspective: 1400px;
+  will-change: transform;
+}
+
+#heroCan {
+  height: 70vh;
+  width: auto;
+  display: block;
+  filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px 40px 50px);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 34px;
+  font-family: 'Anton', sans-serif;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.85);
+  animation: arrowBob 1.8s ease-in-out infinite;
+  text-align: center;
+}
+
+/* --- Section Contenu Blanc --- */
+.content-section {
+  position: relative;
+  background: linear-gradient(rgb(255, 255, 255) 0%, rgb(255, 247, 245) 100%);
+  padding: 120px 5vw 140px;
+  z-index: 10;
+}
+
+.section-title {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(44px, 7vw, 104px);
+  line-height: 0.92;
+  color: rgb(26, 26, 26);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+/* Structure de la grille quand elle se trouve dans la section engagement */
+.content-section #flavorGrid {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1280px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+.content-section .flavor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 25px 40px;
+}
+
+.content-section .flavor-can {
+  height: 160px;
+}
+
+.card-meta {
+  position: relative;
+  z-index: 2;
+  margin-top: 24px;
+}
+
+.card-meta h3 {
+  font-family: 'Anton', sans-serif;
+  font-size: 24px;
+  color: rgb(26, 26, 26);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.card-meta p {
+  font-size: 15px;
+  color: rgb(107, 107, 107);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.cta-container {
+  text-align: center;
+  margin-top: 70px;
+}
+
+.magnetic-btn {
+  display: inline-block;
+  background: rgb(230, 26, 39);
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 16px 34px;
+  border-radius: 44px;
+  text-decoration: none;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 34px;
+}
+
+/* ==========================================================================
+   3. RESPONSIVE / MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 992px) {
+  #flavorGrid, .content-section #flavorGrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 576px) {
+  #flavorGrid, .content-section #flavorGrid {
+    grid-template-columns: 1fr !important;
+  }
 }

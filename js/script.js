@@ -1,7 +1,5 @@
-// Déclaration des ressources initiales
 window.__resources = {};
 
-// Fonction utilitaire indispensable pour borner une valeur entre un min et un max
 const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,14 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const p = clamp(-rect.top / total, 0, 1);
       
-      const rot = p * 540;
-      const scale = 1 + p * 0.28;
-      const drift = Math.sin(p * Math.PI) * -20;
+      const rot = p * 400;
+      const scale = 1 + p * 0.20;
+      const drift = Math.sin(p * Math.PI) * -10;
       
       can.style.transform = `rotateY(${rot}deg) scale(${scale}) translateY(${drift}px)`;
       
       if (layerA) {
-        const a = clamp(1 - (p - 0.30) / 0.22, 0, 1);
+        const a = clamp(1 - (p - 0.10) / 0.20, 0, 1);
         layerA.style.opacity = a;
         layerA.style.transform = `scale(${1 + p * 0.15})`;
       }
@@ -51,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- 3. INTERACTIVITE DES CARTES DE SAVEURS (HOVER EFFECTS) ---
+  // --- 3. INTERACTIVITE DES CARTES (HOVER EFFECTS) ---
   const cards = document.querySelectorAll('.flavor-card');
   
   cards.forEach(card => {
@@ -88,14 +86,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 4. EFFET MAGNÉTIQUE POUR LES BOUTONS INTERACTIFS ---
+  // --- 4. EFFET MAGNÉTIQUE ---
   const magnetics = document.querySelectorAll('.magnetic');
   magnetics.forEach(elem => {
     elem.addEventListener('mousemove', (e) => {
       const bound = elem.getBoundingClientRect();
       const x = e.clientX - bound.left - (bound.width / 2);
       const y = e.clientY - bound.top - (bound.height / 2);
-      // Déplace légèrement le bouton vers la souris (facteur 0.3)
       elem.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
     });
     
